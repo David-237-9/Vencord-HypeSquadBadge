@@ -52,7 +52,7 @@ export default definePlugin({
             inputType: ApplicationCommandInputType.BUILT_IN,
             options: [
                 {
-                    name: "option",
+                    name: "house",
                     description: "Choose which HypeSquad house to set your badge to.",
                     type: 3,
                     required: true,
@@ -66,7 +66,7 @@ export default definePlugin({
 
             execute: async (args) => {
                 const selected = args.find(
-                    arg => arg.name === "option"
+                    arg => arg.name === "house"
                 )?.value;
 
                 let res: boolean | undefined;
@@ -88,11 +88,11 @@ export default definePlugin({
                         res = await setBadge(3)
                         break;
 
-                    /** INVALID OPTION */
+                    /** INVALID HOUSE */
                     default:
                         void showNotification({
                             title: notificationTitle,
-                            body: "Invalid option selected.",
+                            body: "Invalid house selected.",
                         });
                         break;
                 }
